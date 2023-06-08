@@ -2,7 +2,7 @@ import arcpy
 import os
 
 # Pedir al usuario que ingrese la carpeta donde están los archivos .mxd
-carpeta = r"C:\Users\Onfe\OneDrive\Angelopolis\Anexo 1. Mapas y GDB\Mapas"
+carpeta = r"C:\Users\Onfe\Desktop\3X"
 
 # Crear una lista con los nombres de los archivos .mxd
 mapas = os.listdir(carpeta)
@@ -24,10 +24,10 @@ for mapa in mapas:
         jpg = os.path.join(carpeta, nombre + ".jpg")
         # Exportar el mapa a pdf con la resolución especificada
         arcpy.mapping.ExportToPDF(mxd, pdf, resolution=resolucion)
-        print(f"Se ha exportado el mapa {nombre} a PDF: {pdf}")
+        print("Se ha exportado el mapa {} a PDF: {}".format(nombre, pdf))
         # Exportar el mapa a jpg con la resolución especificada
         arcpy.mapping.ExportToJPEG(mxd, jpg, resolution=resolucion)
-        print(f"Se ha exportado el mapa {nombre} a JPEG: {jpg}")
+        print("Se ha exportado el mapa {} a JPEG: {}".format(nombre, jpg))
         # Cerrar el objeto MapDocument
         del mxd
 
