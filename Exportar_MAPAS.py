@@ -1,15 +1,14 @@
-# Importar los módulos necesarios
 import arcpy
 import os
 
-# Definir la carpeta donde están los archivos .mxd
-carpeta = r"D:\MiGEO\COPIAS DE SEGURIDAD\IDI-16113X\03_MapasMXD"
-
-# Definir la carpeta donde se guardarán los archivos pdf y jpg
-salida = r"D:\MiGEO\COPIAS DE SEGURIDAD\IDI-16113X\03_MapasMXD"
+# Pedir al usuario que ingrese la carpeta donde están los archivos .mxd
+carpeta = r"C:\Users\Onfe\OneDrive\Angelopolis\Anexo 1. Mapas y GDB\Mapas"
 
 # Crear una lista con los nombres de los archivos .mxd
 mapas = os.listdir(carpeta)
+
+# Resolución en puntos por pulgada (dpi)
+resolucion = 300
 
 # Recorrer la lista de mapas
 for mapa in mapas:
@@ -20,15 +19,17 @@ for mapa in mapas:
         # Obtener el nombre del archivo sin la extensión
         nombre = os.path.splitext(mapa)[0]
         # Definir el nombre y la ruta del archivo pdf
-        pdf = os.path.join(salida, nombre + ".pdf")
+        pdf = os.path.join(carpeta, nombre + ".pdf")
         # Definir el nombre y la ruta del archivo jpg
-        jpg = os.path.join(salida, nombre + ".jpg")
-        # Exportar el mapa a pdf
-        arcpy.mapping.ExportToPDF(mxd, pdf)
-        # Exportar el mapa a jpg
-        arcpy.mapping.ExportToJPEG(mxd, jpg)
+        jpg = os.path.join(carpeta, nombre + ".jpg")
+        # Exportar el mapa a pdf con la resolución especificada
+        arcpy.mapping.ExportToPDF(mxd, pdf, resolution=resolucion)
+        print(f"Se ha exportado el mapa {nombre} a PDF: {pdf}")
+        # Exportar el mapa a jpg con la resolución especificada
+        arcpy.mapping.ExportToJPEG(mxd, jpg, resolution=resolucion)
+        print(f"Se ha exportado el mapa {nombre} a JPEG: {jpg}")
         # Cerrar el objeto MapDocument
         del mxd
 
 # Imprimir un mensaje de finalización
-print("Se han exportado todos los mapas a pdf y jpg")
+print("Se han exportado todos los mapas a pdf y jpg con la calidad mejorada")
