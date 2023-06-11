@@ -19,6 +19,8 @@ Para FechaAA, y lo debes asi asi para FechaMM y FechaDD.
 6. Los mapas se exportar en una carpeta aparte, pero el mapa en la carpeta origen conserva las modificaciones.
 7. Puedes eliminar de ultima los mapas exportados en dicha carpeta o solo copiar y pegar donde desees.
 
+Lo que puedes hacer para que se ejecute el codigo bien, es revisar tu entorno en ArcGis y veriicar las capas que tengas cargadas en el scrypt y colocar los mismos nombres como se muestran en las imagenes o simplemente copiar y pegar de uno que ya tengas listo. 
+
 # El codigo se debe ejecutar desde el intérprete de Python de ArcGIS: En lugar de ejecutar el script desde IDLE, intenta ejecutarlo desde el intérprete de Python que viene con ArcGIS. Normalmente, se encuentra en "C:\Python27\ArcGIS10.8\python.exe". Abre la línea de comandos, navega hasta esa ubicación y ejecuta tu script desde allí
 
 
