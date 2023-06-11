@@ -35,3 +35,13 @@ Lo que puedes hacer para que se ejecute el codigo bien, es revisar tu entorno en
 
 ## # Definir la carpeta donde se guardarán los archivos pdf y jpg
 salida = r"D:\MiGEO\COPIAS DE SEGURIDAD\IDI-16113X\03_MapasMXD" esta linea de codigo es opcional, solo ingresar la carpeta donde estan los archivos .mxd y se exportan automaticamente los PDF's y JPG's
+
+python exportar_mapas.py Ingrese la carpeta donde están los archivos .mxd: C:\Users\Onfe\Desktop\3X Se ha exportado el mapa Mapa 1_Zona 1.mxd a PDF: C:\Users\Onfe\Desktop\3X\Exportados\Mapa 1_Zona 1.pdf Se ha exportado el mapa Mapa 1_Zona 1.mxd a JPEG: C:\Users\Onfe\Desktop\3X\Exportados\Mapa 1_Zona 1.jpg Se ha exportado el mapa Mapa 2_Zona 2.mxd a PDF: C:\Users\Onfe\Desktop\3X\Exportados\Mapa 2_Zona 2.pdf Se ha exportado el mapa Mapa 2_Zona 2.mxd a JPEG: C:\Users\Onfe\Desktop\3X\Exportados\Mapa 2_Zona 2.jpg Se han exportado todos los mapas a pdf y jpg con la calidad mejorada
+
+
+## Autor
+
+- OnfeVS
+- Instagram: @onfevs
+- LinkedIn: https://www.linkedin.com/in/onfevs/
+
