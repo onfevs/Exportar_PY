@@ -1,9 +1,18 @@
-# Exportar_PY
- Exportar archivos .mxd a PDF y JPG 
+# Exportar mapas a PDF y JPEG con Python y ArcPy
+
+Este código permite exportar varios archivos .mxd a PDF y JPEG con una resolución de 300 dpi, cambiando algunos elementos del diseño del mapa como el número, la fecha y las observaciones.
+
+## Uso
+
+Para usar este código, solo hay que ejecutarlo en un IDE de Python o en la consola de ArcGIS. El código pedirá al usuario que ingrese la carpeta donde están los archivos .mxd y creará una subcarpeta llamada "Exportados" donde guardará los archivos PDF y JPEG. Por ejemplo:
 
 Para poder usar el codigo y que te funcione en todos los mapas debes hacer algunos cambios en el entorno de ArcGis10.8.
 
-Aca te los enseno.
+## Requisitos
+
+1. Tener instalado ArcGIS Desktop con la licencia de ArcPy.
+2. Tener una carpeta con los archivos .mxd que se quieren exportar.
+3. Tener los elementos del diseño del mapa con los nombres y etiquetas especificados en el código.
 
 1. Debes asignarse un name a cada TEXTO que quieras modificar, ejemplo yo tengo asignado estos 
 ![image](https://github.com/onfevs/Exportar_PY/assets/29380120/0bf1d4f1-c004-45e3-9790-77a1f186b95e)
