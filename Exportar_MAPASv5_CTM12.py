@@ -12,7 +12,10 @@ def obtener_numero_mapa(nombre_mapa):
             numero_mapa += caracter
         elif numero_mapa:
             break
-    return int(numero_mapa)
+    if numero_mapa:
+        return int(numero_mapa)
+    else:
+        return None
 
 def modificar_texto_mapa(elemento, numero_mapa, total_mapas):
     # Verificar si el elemento es un cuadro de texto y contiene la etiqueta <BOL>
@@ -63,29 +66,33 @@ for mapa in mapas:
     # Obtener el número de mapa del nombre del archivo
     numero_mapa = obtener_numero_mapa(nombre)
 
-    # Recorrer la lista de elementos del diseño
-    for elemento in elementos:
-        # Llamar a la función para modificar el texto del elemento
-        modificar_texto_mapa(elemento, numero_mapa, total_mapas)
+    # Verificar si se pudo obtener un número de mapa válido
+    if numero_mapa is not None:
+        # Recorrer la lista de elementos del diseño
+        for elemento in elementos:
+            # Llamar a la función para modificar el texto del elemento
+            modificar_texto_mapa(elemento, numero_mapa, total_mapas)
 
-    # Obtener el dataframe "Layers"
-    layers = arcpy.mapping.ListDataFrames(mxd, "Layers")[0]
+        # Obtener el dataframe "Layers"
+        layers = arcpy.mapping.ListDataFrames(mxd, "Layers")[0]
 
-    # Crear el objeto SpatialReference para CTM12
-    spatial_reference = arcpy.SpatialReference()
-    spatial_reference.loadFromString('PROJCS["MAGNA_Colombia_CTM12",GEOGCS["GCS_MAGNA",DATUM["D_MAGNA",SPHEROID["GRS_1980",6378137.0,298.257222101]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]],PROJECTION["Transverse_Mercator"],PARAMETER["False_Easting",5000000.0],PARAMETER["False_Northing",2000000.0],PARAMETER["Central_Meridian",-73.0],PARAMETER["Scale_Factor",0.9992],PARAMETER["Latitude_Of_Origin",4.0],UNIT["Meter",1.0]]')
+        # Crear el objeto SpatialReference para CTM12
+        spatial_reference = arcpy.SpatialReference()
+        spatial_reference.loadFromString('PROJCS["MAGNA_Colombia_CTM12",GEOGCS["GCS_MAGNA",DATUM["D_MAGNA",SPHEROID["GRS_1980",6378137.0,298.257222101]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]],PROJECTION["Transverse_Mercator"],PARAMETER["False_Easting",5000000.0],PARAMETER["False_Northing",2000000.0],PARAMETER["Central_Meridian",-73.0],PARAMETER["Scale_Factor",0.9992],PARAMETER["Latitude_Of_Origin",4.0],UNIT["Meter",1.0]]')
 
-    # Asignar el sistema de coordenadas CTM12 al dataframe "Layers"
-    layers.spatialReference = spatial_reference
+        # Asignar el sistema de coordenadas CTM12 al dataframe "Layers"
+        layers.spatialReference = spatial_reference
 
-    # Guardar los cambios en el archivo .mxd original
-    mxd.save()
+        # Guardar los cambios en el archivo .mxd original
+        mxd.save()
 
-    # Llamar a la función para exportar el mapa a PDF y JPEG
-    exportar_mapa(mxd, nombre, resolucion)
+        # Llamar a la función para exportar el mapa a PDF y JPEG
+        exportar_mapa(mxd, nombre, resolucion)
 
-    # Cerrar el objeto MapDocument
-    del mxd
+        # Cerrar el objeto MapDocument
+        del mxd
+    else:
+        print("El archivo {} no sigue el formato esperado y será omitido.".format(mapa)) #Debe tener MAPA 1_NOMBRE
 
 # Imprimir un mensaje de finalización
 print("Se han exportado todos los mapas a PDF y JPEG con la calidad mejorada")
